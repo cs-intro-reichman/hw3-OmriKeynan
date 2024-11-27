@@ -32,7 +32,7 @@ public class LoanCalc {
 		for (int i = 0; i < n; i++){
 			result = ((result - payment) * (1 + rate/100));
 		}
-		return result+1;
+		return result;
 	}
 
 	
@@ -46,7 +46,7 @@ public class LoanCalc {
 		double result = endBalance(loan, rate, n, payment);
 		iterationCounter = 0;
 
-		while (result > 0) {
+		while (result > epsilon) {
 			payment += epsilon; 
 			iterationCounter++;
 			result = endBalance(loan, rate, n, payment);
