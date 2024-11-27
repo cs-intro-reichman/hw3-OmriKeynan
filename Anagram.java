@@ -66,7 +66,10 @@ public class Anagram {
 			else if (test >= 97 && test <= 122) { 
 			preProcessedString += test; 
 			}
+			else if (test == ' ') {
+				preProcessedString += test; // Retain spaces
 			}
+		}
 		return preProcessedString;
 	} 
 	   
