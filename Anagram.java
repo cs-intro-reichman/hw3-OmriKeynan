@@ -28,22 +28,58 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		String preProcessStr1 = preProcess(str1);
+		String preProcessStr2 = preProcess(str2);
+		char x;
+		for (int i = 0; i < preProcessStr1.length(); i++) {
+			String newStr2 = "";
+			int indexChar2;
+			x = preProcessStr1.charAt(i);
+			indexChar2 = preProcessStr2.indexOf(x);
+			if(indexChar2 == -1) {
+				return false;
+			}
+			for (int j = 0; j < preProcessStr2.length(); j++) {
+				if (j != indexChar2)
+				{
+					newStr2 += preProcessStr2.charAt(j);
+				}
+			}
+			preProcessStr2 = newStr2;
+		}
+		return true;	
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		String preProcessedString = "";
+		char test;
+		
+		for (int i = 0; i < str.length(); i++) {
+			test = str.charAt(i);
+			if (test >= 65 && test <= 90) { 
+				test = (char) (test + 32);
+				preProcessedString += test;
+			} 
+			else if (test >= 97 && test <= 122) { 
+			preProcessedString += test; 
+			}
+			}
+		return preProcessedString;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String randomString = "";
+		String stringCheck = str;
+		for (int i = 0; i < str.length(); i++) {
+			int randomNumber = (int)((Math.random()) * stringCheck.length());
+			randomString += stringCheck.charAt(randomNumber);
+			stringCheck = stringCheck.substring(0,randomNumber) + stringCheck.substring(randomNumber + 1);
+		}
+		return randomString;
 	}
 }
